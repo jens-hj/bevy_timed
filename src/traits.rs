@@ -1,7 +1,7 @@
 use bevy::prelude::*;
 use std::time::Duration;
 
-use crate::Timed;
+use crate::{Despawn, Hide, Timed};
 
 /// Trait for actions that can be performed when a timer completes
 pub trait TimerAction: Send + Sync + std::fmt::Debug + 'static {
@@ -19,5 +19,13 @@ impl Timed {
 
     pub fn from_seconds(action: impl TimerAction + 'static, seconds: f32) -> Self {
         Self::new(action, Duration::from_secs_f32(seconds))
+    }
+
+    pub fn despawn_after(seconds: f32) -> Self {
+        Self::from_seconds(Despawn, seconds)
+    }
+
+    pub fn hide_after(seconds: f32) -> Self {
+        Self::from_seconds(Hide, seconds)
     }
 }
