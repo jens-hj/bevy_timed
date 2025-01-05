@@ -1,4 +1,4 @@
-use crate::{timed_system, Despawn, Timed, TimedPlugin};
+use crate::{timed_system, Timed, TimedPlugin};
 use bevy::{ecs::system::RunSystemOnce, prelude::*};
 use std::time::Duration;
 
@@ -8,10 +8,7 @@ fn test_despawn_timer() {
     app.add_plugins((MinimalPlugins, TimedPlugin));
 
     // Spawn entity with timed despawn
-    let entity = app
-        .world_mut()
-        .spawn((Timed::from_seconds(Despawn, 0.5),))
-        .id();
+    let entity = app.world_mut().spawn((Timed::despawn_after(0.5),)).id();
 
     // Entity should exist initially
     assert!(app.world().get_entity(entity).is_ok());

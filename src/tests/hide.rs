@@ -1,4 +1,4 @@
-use crate::{timed_system, Hide, Timed, TimedPlugin};
+use crate::{timed_system, Timed, TimedPlugin};
 use bevy::{ecs::system::RunSystemOnce, prelude::*};
 use std::time::Duration;
 
@@ -9,7 +9,7 @@ fn test_hide_timer() {
 
     let entity = app
         .world_mut()
-        .spawn((Timed::from_seconds(Hide, 0.5), Visibility::Visible))
+        .spawn((Timed::hide_after(0.5), Visibility::Visible))
         .id();
 
     // Advance time past the timer

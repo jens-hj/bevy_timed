@@ -28,7 +28,12 @@ use bevy::prelude::*;
 use bevy_timed::Timed;
 
 fn spawn_timed_entity(mut commands: Commands) {
+    // Use the explicit `Timed::from_seconds` constructor specifying the action
     commands.spawn((Transform::default(), Timed::from_seconds(Despawn, 0.5)));
+
+    // Use the more semantic `Timed::despawn_after` constructor which is
+    // equivalent to the above.
+    commands.spawn((Transform::default(), Timed::despawn_after(0.5)));
 }
 ```
 

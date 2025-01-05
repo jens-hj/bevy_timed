@@ -1,7 +1,10 @@
 [package]
 name = "bevy_timed"
-version = "0.2.0"
+version = "0.2.1"
 edition = "2021"
+repository = "https://github.com/jens-hj/bevy_timed"
+authors = ["Avianastra <avianastra@gmail.com>"]
+
 
 [dependencies]
 bevy = "0.15"
